@@ -17,6 +17,9 @@ public class BoardTile {
   public void setTile(GameTile tile) {
     this.tile = tile;
   }
-  
 
+  @Override
+  public String toString() {
+    return tile.toString();
+  }
 }
