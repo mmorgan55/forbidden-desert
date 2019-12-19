@@ -22,8 +22,4 @@ public class GameTile extends Tile {
     isFlipped = true;
   }
 
-  protected int changeSandCounter(int num) {
-    return num;
-  }
-
 }
