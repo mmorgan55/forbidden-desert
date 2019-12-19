@@ -14,7 +14,13 @@ public class ForbiddenDesertBoard {
   public void makeBoard() {
     for (int i = 0; i < ROW_SIZE; i++) {
       for (int j = 0; j < COLUMN_SIZE; j++) {
+
+
         board.add(new BoardTile(i, j));
+        if (i == 2 && j == 2) {
+          board.get(board.size() - 1).setTile(new Storm(i, j));
+          continue;
+        }
         board.get(board.size() - 1).setTile(new GameTile());
       }
     }
