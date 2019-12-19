@@ -21,4 +21,9 @@ public class GameTile extends Tile {
   void flipTile() {
     isFlipped = true;
   }
+
+  protected int changeSandCounter(int num) {
+    return num;
+  }
+
 }

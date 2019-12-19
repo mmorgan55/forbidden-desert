@@ -9,11 +9,9 @@ public class ForbiddenDesertBoard {
 
   public ForbiddenDesertBoard() {
     board = new ArrayList<>();
-    makeBoard();
-    printBoard(board);
   }
 
-  private void makeBoard() {
+  public void makeBoard() {
     for (int i = 0; i < ROW_SIZE; i++) {
       for (int j = 0; j < COLUMN_SIZE; j++) {
         board.add(new BoardTile(i, j));
@@ -22,7 +20,7 @@ public class ForbiddenDesertBoard {
     }
   }
 
-  private void printBoard(List<BoardTile> board) {
+  public void printBoard() {
     int counter = 0;
     for (BoardTile tile : board) {
       System.out.print(tile + " ");
@@ -31,5 +29,13 @@ public class ForbiddenDesertBoard {
         System.out.println();
       }
     }
+  }
+
+  public List<BoardTile> getBoard() {
+    return board;
+  }
+
+  public void setBoard(List<BoardTile> board) {
+    this.board = board;
   }
 }

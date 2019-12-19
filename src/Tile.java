@@ -4,11 +4,5 @@ public abstract class Tile {
 
   abstract void flipTile();
 
-  protected int addSand() {
-    return 1;
-  }
 
-  protected int removeSand() {
-    return -1;
-  }
 }

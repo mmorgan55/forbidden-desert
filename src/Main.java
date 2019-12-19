@@ -1,6 +1,8 @@
 public class Main {
 
   public static void main(String[] args) {
-    new ForbiddenDesertBoard();
+    ForbiddenDesertBoard board = new ForbiddenDesertBoard();
+    board.makeBoard();
+    board.printBoard();
   }
 }
