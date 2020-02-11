@@ -1,30 +1,31 @@
 public class Storm extends GameTile {
-  private int row;
-  private int column;
 
-  public Storm(int row, int column) {
-    this.row = row;
-    this.column = column;
-  }
+  private int stormRow;
+  private int stormColumn;
 
-  public int getRow() {
-    return row;
-  }
-
-  public void setRow(int row) {
-    this.row = row;
-  }
-
-  public int getColumn() {
-    return column;
-  }
-
-  public void setColumn(int column) {
-    this.column = column;
+  public Storm(int stormRow, int stormColumn) {
+    this.stormRow = stormRow;
+    this.stormColumn = stormColumn;
   }
 
   @Override
   public String toString() {
-    return "S" + row + column;
+    return "ST";
+  }
+
+  public int getStormRow() {
+    return stormRow;
+  }
+
+  public void setStormRow(int stormRow) {
+    this.stormRow = stormRow;
+  }
+
+  public int getStormColumn() {
+    return stormColumn;
+  }
+
+  public void setStormColumn(int stormColumn) {
+    this.stormColumn = stormColumn;
   }
 }

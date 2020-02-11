@@ -1,6 +1,7 @@
 public class BoardTile {
 
   private final int ROW;
+
   private final int COLUMN;
 
   private GameTile tile;
@@ -21,5 +22,13 @@ public class BoardTile {
   @Override
   public String toString() {
     return tile.toString();
+  }
+
+  public int getROW() {
+    return ROW;
+  }
+
+  public int getCOLUMN() {
+    return COLUMN;
   }
 }

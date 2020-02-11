@@ -1,6 +1,7 @@
 public class GameTile {
 
   private boolean isFlipped;
+
   private int sandCounter;
 
   public GameTile() {
@@ -20,5 +21,14 @@ public class GameTile {
   protected void flipTile() {
     isFlipped = false;
   }
+
+  public int getSandCounter() {
+    return sandCounter;
+  }
+
+  public void setSandCounter(int sandCounter) {
+    this.sandCounter = sandCounter;
+  }
+
 
 }
