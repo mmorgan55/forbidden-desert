@@ -19,7 +19,7 @@ public class GameTile {
   }
 
   protected void flipTile() {
-    isFlipped = false;
+    isFlipped = true;
   }
 
   public int getSandCounter() {
