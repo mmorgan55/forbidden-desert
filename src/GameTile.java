@@ -1,11 +1,12 @@
-public class GameTile extends Tile {
+public class GameTile {
 
   private boolean isFlipped;
+
   private int sandCounter;
 
   public GameTile() {
-    this.isFlipped = START_FLIPPED;
-    this.sandCounter = STARTING_SAND;
+    isFlipped = false;
+    sandCounter = 0;
   }
 
   @Override
@@ -17,9 +18,17 @@ public class GameTile extends Tile {
     }
   }
 
-  @Override
-  void flipTile() {
+  protected void flipTile() {
     isFlipped = true;
   }
+
+  public int getSandCounter() {
+    return sandCounter;
+  }
+
+  public void setSandCounter(int sandCounter) {
+    this.sandCounter = sandCounter;
+  }
+
 
 }

@@ -1,25 +1,34 @@
 public class BoardTile {
 
   private final int ROW;
+
   private final int COLUMN;
 
-  private GameTile tile;
+  private GameTile gameTile;
 
   public BoardTile(int row, int column) {
     ROW = row;
     COLUMN = column;
   }
 
-  public GameTile getTile() {
-    return tile;
+  public GameTile getGameTile() {
+    return gameTile;
   }
 
   public void setTile(GameTile tile) {
-    this.tile = tile;
+    this.gameTile = tile;
   }
 
   @Override
   public String toString() {
-    return tile.toString();
+    return gameTile.toString();
+  }
+
+  public int getROW() {
+    return ROW;
+  }
+
+  public int getCOLUMN() {
+    return COLUMN;
   }
 }
