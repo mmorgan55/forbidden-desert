@@ -1,10 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameTile {
 
   private boolean isFlipped;
-
   private int sandCounter;
+  private List<Player> playersOnTile;
 
   public GameTile() {
+    playersOnTile = new ArrayList<>();
     isFlipped = false;
     sandCounter = 0;
   }
@@ -30,5 +34,12 @@ public class GameTile {
     this.sandCounter = sandCounter;
   }
 
+  public List<Player> getPlayersOnTile() {
+    return playersOnTile;
+  }
 
+  public Player getPlayerFromList() {
+    
+    return null;
+  }
 }

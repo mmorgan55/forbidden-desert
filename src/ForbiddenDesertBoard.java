@@ -8,6 +8,7 @@ public class ForbiddenDesertBoard {
 
 
   private List<BoardTile> board;
+  private List<Player> players;
   private Storm storm;
 
   public ForbiddenDesertBoard() {
