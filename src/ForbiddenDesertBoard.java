@@ -14,6 +14,29 @@ public class ForbiddenDesertBoard {
   public ForbiddenDesertBoard() {
     board = new ArrayList<>();
     storm = new Storm(ROW_SIZE / 2, COLUMN_SIZE / 2);
+    players = new ArrayList<>();
+  }
+
+  public void createPlayers() {
+    for (int i = 0; i < 2; i++) {
+      players.add(new Player(i, i, 0));
+    }
+
+    for (Player player : players) {
+      placePlayer(player);
+    }
+  }
+
+  private void placePlayer(Player player) {
+    BoardTile playerTile = board.stream()
+        .filter(tile -> tile.getROW() == player.getRow()
+            && tile.getCOLUMN() == player.getRow())
+        .findFirst()
+        .orElse(null);
+
+    assert playerTile != null;
+
+    playerTile.getGameTile().putPlayerInPlayerMap(player);
   }
 
   public void makeBoard() {
@@ -39,7 +62,6 @@ public class ForbiddenDesertBoard {
         System.out.println();
       }
     }
-
     System.out.println();
   }
 

@@ -10,7 +10,7 @@ public class Storm extends GameTile {
 
   @Override
   public String toString() {
-    return "ST";
+    return "STR";
   }
 
   public int getStormRow() {
