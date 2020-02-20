@@ -92,11 +92,7 @@ public class ForbiddenDesertBoard {
 
     assert stormPosition != null;
 
-    BoardTile nextTile = board.stream()
-        .filter(tile -> tile.getROW() == stormPosition.getROW() + 1
-            && tile.getCOLUMN() == stormPosition.getCOLUMN())
-        .findFirst()
-        .orElse(null);
+    BoardTile nextTile = findBoardTile(stormPosition.getROW() + 1, stormPosition.getCOLUMN());
 
     if (nextTile != null) {
       GameTile temp = nextTile.getGameTile();
@@ -114,11 +110,7 @@ public class ForbiddenDesertBoard {
 
     assert stormPosition != null;
 
-    BoardTile nextTile = board.stream()
-        .filter(tile -> tile.getROW() == stormPosition.getROW() - 1
-            && tile.getCOLUMN() == stormPosition.getCOLUMN())
-        .findFirst()
-        .orElse(null);
+    BoardTile nextTile = findBoardTile(stormPosition.getROW() - 1, stormPosition.getCOLUMN());
 
     if (nextTile != null) {
       GameTile temp = nextTile.getGameTile();
@@ -126,7 +118,6 @@ public class ForbiddenDesertBoard {
       nextTile.setTile(storm);
       stormPosition.setTile(temp);
     }
-
   }
 
   private void moveStormLeft() {
@@ -137,11 +128,7 @@ public class ForbiddenDesertBoard {
 
     assert stormPosition != null;
 
-    BoardTile nextTile = board.stream()
-        .filter(tile -> tile.getROW() == stormPosition.getROW()
-            && tile.getCOLUMN() == stormPosition.getCOLUMN() - 1)
-        .findFirst()
-        .orElse(null);
+    BoardTile nextTile = findBoardTile(stormPosition.getROW(), stormPosition.getCOLUMN() - 1);
 
     if (nextTile != null) {
       GameTile temp = nextTile.getGameTile();
@@ -149,7 +136,6 @@ public class ForbiddenDesertBoard {
       nextTile.setTile(storm);
       stormPosition.setTile(temp);
     }
-
   }
 
   private void moveStormRight() {
@@ -160,11 +146,7 @@ public class ForbiddenDesertBoard {
 
     assert stormPosition != null;
 
-    BoardTile nextTile = board.stream()
-        .filter(tile -> tile.getROW() == stormPosition.getROW()
-            && tile.getCOLUMN() == stormPosition.getCOLUMN() + 1)
-        .findFirst()
-        .orElse(null);
+    BoardTile nextTile = findBoardTile(stormPosition.getROW(), stormPosition.getCOLUMN() + 1);
 
     if (nextTile != null) {
       GameTile temp = nextTile.getGameTile();
@@ -176,10 +158,8 @@ public class ForbiddenDesertBoard {
   }
 
   public void flipTile(int row, int column) {
-    BoardTile boardTile = board.stream()
-        .filter(tile -> tile.getROW() == row && tile.getCOLUMN() == column)
-        .findFirst()
-        .orElse(null);
+
+    BoardTile boardTile = findBoardTile(row, column);
 
     assert boardTile != null;
 
@@ -187,6 +167,13 @@ public class ForbiddenDesertBoard {
         .getGameTile() instanceof Storm)) {
       boardTile.getGameTile().flipTile();
     }
+  }
+
+  private BoardTile findBoardTile(int row, int column) {
+    return board.stream()
+        .filter(tile -> tile.getROW() == row && tile.getCOLUMN() == column)
+        .findFirst()
+        .orElse(null);
   }
 
   public List<BoardTile> getBoard() {
