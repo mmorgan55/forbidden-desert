@@ -1,10 +1,16 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class GameTile {
 
   private boolean isFlipped;
-
   private int sandCounter;
+  private Map<Integer, Player> playersOnTile;
 
   public GameTile() {
+    playersOnTile = new HashMap<>();
     isFlipped = false;
     sandCounter = 0;
   }
@@ -12,9 +18,9 @@ public class GameTile {
   @Override
   public String toString() {
     if (isFlipped) {
-      return "O" + sandCounter;
+      return "O" + sandCounter + playersOnTile.size();
     } else {
-      return "X" + sandCounter;
+      return "X" + sandCounter + playersOnTile.size();
     }
   }
 
@@ -30,5 +36,15 @@ public class GameTile {
     this.sandCounter = sandCounter;
   }
 
+  public Map<Integer, Player> getPlayersOnTile() {
+    return playersOnTile;
+  }
 
+  public void putPlayerInPlayerMap(Player player) {
+    playersOnTile.put(player.getPlayerNumber(), player);
+  }
+  public Player getPlayerFromPlayerMap() {
+
+    return null;
+  }
 }
