@@ -27,11 +27,6 @@ public class ForbiddenDesertBoard {
     }
   }
 
-  private void placePlayer(Player player) {
-    BoardTile playerTile = findBoardTile(player.getRow(), player.getColumn());
-    playerTile.getGameTile().putPlayerInPlayerMap(player);
-  }
-
   public void makeBoard() {
     for (int i = 0; i < ROW_SIZE; i++) {
       for (int j = 0; j < COLUMN_SIZE; j++) {
@@ -77,15 +72,17 @@ public class ForbiddenDesertBoard {
     }
   }
 
+  private void placePlayer(Player player) {
+    BoardTile playerTile = findBoardTile(player.getRow(), player.getColumn());
+    playerTile.getGameTile().putPlayerInPlayerMap(player);
+  }
+
   private void moveStormDown() {
     BoardTile stormPosition = findStormPosition();
     BoardTile nextTile = findBoardTile(stormPosition.getROW() + 1, stormPosition.getCOLUMN());
 
     if (nextTile != null) {
-      GameTile temp = nextTile.getGameTile();
-      temp.setSandCounter(temp.getSandCounter() + 1);
-      nextTile.setTile(storm);
-      stormPosition.setTile(temp);
+      swapStorm(stormPosition, nextTile);
     }
   }
 
@@ -94,10 +91,7 @@ public class ForbiddenDesertBoard {
     BoardTile nextTile = findBoardTile(stormPosition.getROW() - 1, stormPosition.getCOLUMN());
 
     if (nextTile != null) {
-      GameTile temp = nextTile.getGameTile();
-      temp.setSandCounter(temp.getSandCounter() + 1);
-      nextTile.setTile(storm);
-      stormPosition.setTile(temp);
+      swapStorm(stormPosition, nextTile);
     }
   }
 
@@ -106,10 +100,7 @@ public class ForbiddenDesertBoard {
     BoardTile nextTile = findBoardTile(stormPosition.getROW(), stormPosition.getCOLUMN() - 1);
 
     if (nextTile != null) {
-      GameTile temp = nextTile.getGameTile();
-      temp.setSandCounter(temp.getSandCounter() + 1);
-      nextTile.setTile(storm);
-      stormPosition.setTile(temp);
+      swapStorm(stormPosition, nextTile);
     }
   }
 
@@ -118,10 +109,7 @@ public class ForbiddenDesertBoard {
     BoardTile nextTile = findBoardTile(stormPosition.getROW(), stormPosition.getCOLUMN() + 1);
 
     if (nextTile != null) {
-      GameTile temp = nextTile.getGameTile();
-      temp.setSandCounter(temp.getSandCounter() + 1);
-      nextTile.setTile(storm);
-      stormPosition.setTile(temp);
+      swapStorm(stormPosition, nextTile);
     }
   }
 
@@ -146,6 +134,13 @@ public class ForbiddenDesertBoard {
         .filter(tile -> tile.getGameTile() instanceof Storm)
         .findFirst()
         .orElse(null);
+  }
+
+  private void swapStorm(BoardTile stormPosition, BoardTile nextTile) {
+    GameTile temp = nextTile.getGameTile();
+    temp.setSandCounter(temp.getSandCounter() + 1);
+    nextTile.setTile(storm);
+    stormPosition.setTile(temp);
   }
 
   public List<BoardTile> getBoard() {
